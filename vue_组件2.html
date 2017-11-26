@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <weichuang :msg="msg" @click.native="add()"></weichuang>
+        <div>{{count}}</div>
+    </div>
+    
+    <script src="Vue/vue.js"></script>
+    <script>
+        let web={
+            template:`<h1>{{femsg}}</h1>`,
+            props:['femsg'],
+        };
+        
+        
+        let wcwx={
+            template:`
+                <div>
+                    <h1>这是父组件{{msg}}</h1>
+                    <fe :femsg="msg"></fe>
+                </div>`,
+            components:{
+                fe:web,
+            },
+            props:['msg'],
+            
+        };
+        
+        
+        new Vue({
+            el:'#app',
+            data:{
+               msg:'msg123',
+               count:0,
+            },
+            components:{
+                weichuang:wcwx,
+            },
+            methods:{
+                add(){
+                    this.count++;
+                },
+            },
+        });
+    
+    </script>
+</body>
+</html>

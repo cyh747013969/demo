@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>练习</title>
+        <meta charset="utf-8">
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        
+        <input type="button" value="按钮" class="button">
+        <ul id="ul">
+            <li>11</li>
+            <li class="22">22</li>
+            <li class="33">33</li>
+        </ul>
+        <script>
+//         var oDiv1=document.getElementById("div1");   
+//         function getstyle(elem,attr){
+//            if(elem.currentStyle){
+//                return elem.currentStyle[attr];//IE浏览器
+//                console.log(elem.currentStyle[attr]);
+//            }else{
+//                if(window.getComputedStyle){//标准浏览器
+//                    return getComputedStyle(elem,false)[attr];
+//                }else{
+//                    return elem.style[attr];
+//                }
+//            }
+//        }
+//            console.log(getstyle(oDiv1,"width"));
+//            function Cat(name,age){
+//                this.name=name;
+//                this.age=age;
+//            }
+//            Cat.prototype.eat=function(){
+//                alert(this.name+" is eating");
+//            }
+//            var p1=new Cat("lisi",22);
+//            var p2=new Cat("zhangsan",23);
+//            p1.eat();
+//            function addEvent(elem,type,fn){//绑定事件
+//                //能力检测
+//                if(addEventListener){
+//                    /*return*/ elem.addEventListerner(type,fn,false);
+//                }else if(elem.attachElement){
+////                    renturn elem.attachElement("on"+type,fn);//attach方法是全局方法，所以指向的元素是window
+//                     elem[type+fn]=function(){
+//                         fn.call(elem);//通过调用call函数即可将该方法指向window
+//                     }
+//                }else{
+//                    /*return*/ elem["on"+type];
+//                }
+//            }
+           function $(selector,context){
+           context=context||document;
+            switch(selector.charAt(0)){
+            case '#':
+            return [document.getElementById(selector.substring(1))];
+            break;
+            case '.':
+            return context.getElementsByClassName(selector.substring(1));
+            break;
+            default:
+            return context.getElementsByTagName(selector);
+                break;
+                             }
+                
+            }
+            
+        </script>
+    </body>
+</html>

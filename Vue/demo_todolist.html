@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       *{
+         margin:0;
+         padding:0;
+         list-style:none;
+       }
+       h1{
+        width:400px;
+        height:50px;
+        margin:10px auto;
+        text-align: center;  
+       }
+       #line{
+           width:400px;
+           height:2px;
+           margin:0 auto;
+           background-color:#ccc;
+       }
+       li{
+           width:400px;
+           height:60px;
+           background-color:#ccc;
+           margin:20px auto;
+           padding:0 10px;
+           line-height: 60px;
+       }
+       .left{
+           text-align: left;
+       }
+       .right{
+           display:inline-block;
+           float:right;
+       }
+       .bottom{
+           display:block;
+           width:400px;
+           margin:0 auto;
+           height:40px;
+       }
+       .color{
+           background-color:red;
+       }
+       #increase{
+           width:550px;
+           margin:0 auto;
+       }
+       #search{
+           width:250px;
+           margin:0 auto;
+       }
+       #del{
+           width:32px;
+           height:32px;
+           margin:14px 5px;
+           float:left;
+       }
+       img{
+           display:block;
+       }
+       li .check{
+           width:20px;
+           height:20px;
+           float:left;
+           margin:20px 5px;
+       }
+    </style>
+</head>
+<body>
+    <h1>todolist</h1>
+   <div id="line"></div>
+   <br>
+   <ul id="app">
+       <div id="increase">
+           <span>商品名称：</span><input type="text" placeholder="请输入商品名称" v-model="name">
+           <span>商品价格:</span><input type="text" v-model="price">
+           <button @click="increase()">添加</button><br>
+       </div>
+       <div id="search"><span>检索:</span><input type="text" placeholder="请输入检索关键字" v-model="keyword">
+        <button @click="search()">检索</button>
+       </div>
+       <li v-for="(products,index) in product" :key="index" @click="add(products.price,products,$event)" :class="{color:products.isColor}">
+<!--       多选删除-->
+        <input class="check" type="checkbox" @click.stop="" v-model="checked" :value="index">
+<!--        单个删除-->
+        <div id="del" @click.stop="del(index)"><img src="del2.png" alt=""></div>
+        <span class="left">{{products.name}}</span>
+           <span class="right">{{products.price}}</span>
+       </li>
+       <span class="bottom" @click="delAll()"><button>删除选中</button></span>>
+       <span class="bottom">总价：{{count}}￥</span>
+   </ul>
+   
+   <script src="vue.js"></script>
+   <script>
+       var vm=new Vue({ 
+         el:'#app',
+         data:{
+             count:0,
+             name:'',
+             price:0,
+             keyword:'',
+             product:[
+                 {
+                     name:'上衣',
+                     price:70,
+                     isColor:false,
+                 },
+                 {
+                     name:'裤子',
+                     price:90,
+                     isColor:false,
+                 },
+                 {
+                     name:'围巾',
+                     price:40,
+                     isColor:false,
+                 },
+                 {
+                     name:'鞋子',
+                     price:200,
+                     isColor:false,
+                 },
+                 {
+                     name:'衬衣',
+                     price:70,
+                     isColor:false,
+                 },
+             ],
+             checked:[],
+         },
+         methods:{
+             add(price,product,e){
+                product.isColor=!product.isColor;
+                if(product.isColor){
+                    this.count+=price;
+                }else{
+                    this.count-=price;
+                }
+              },
+              increase(){
+                  this.product.push({
+                      name:this.name,
+                      price:parseInt(this.price),
+                      isColor:false,
+                  });
+              },
+              //重点：箭头函数改变指向，filter用法
+              search(){
+                  let arr=this.product.filter((val,key)=>{
+                      if(val.name.includes(this.keyword)){
+                          return val;
+                      }
+                  })
+                  this.product=arr;
+              },
+              del(idx){
+                  this.product.splice(idx,1);
+              },
+              delAll(){
+                //   console.log(this.product);
+                //   console.log(this.checked);
+                  var arr=this.product.filter((val,idx)=>{
+                      //checked和index的顺序问题
+                    if(!this.checked.includes(idx)){
+                        return val;
+                    };  
+                  });
+                  this.product=arr;
+                  this.checked=[];
+              },
+
+         } 
+       });
+   </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <coverflow :coverList="coverList" :coverWidth="260" :index="2"></coverflow>
+    <script src="vue.js"></script>
+    <script>
+         // all example uses the same js
+      import Coverflow from './components/Coverflow'
+      export default {
+        name: 'app',
+        data () {
+          return {
+            coverList: [
+              {
+                cover: 'http://ogu51f989.bkt.clouddn.com/react.png',
+                title: 'React'
+              }, {
+                cover: 'http://ogu51f989.bkt.clouddn.com/angular.png',
+                title: 'Angular'
+              }, {
+                cover: 'http://ogu51f989.bkt.clouddn.com/vue.png',
+                title: 'Vue'
+              }, {
+                cover: 'http://ogu51f989.bkt.clouddn.com/webpack.png',
+                title: 'Webpack'
+              }, {
+                cover: 'http://ogu51f989.bkt.clouddn.com/yarn.png',
+                title: 'Yarn'
+              }, {
+                cover: 'http://ogu51f989.bkt.clouddn.com/node.png',
+                title: 'Node'
+              }
+            ]
+          }
+        },
+        components: {
+          Coverflow
+        }
+      }
+    </script>
+</body>
+</html>

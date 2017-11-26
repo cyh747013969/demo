@@ -1,0 +1,306 @@
+<html>
+    <head>
+        <title>index</title>
+        <meta charset="utf-8">
+        <style>
+            *{
+                padding :0;
+                margin: 0;
+              
+            }
+            body ul{
+                list-style-type: none;
+            }
+            .header{
+                width:1920px;
+                height:600px;
+                background-image: 
+                url(Web前端/网上商城/images/banner.jpg);
+                background-repeat:no-repeat;
+                overflow:hidden;
+            }
+            
+          .topic{
+                width: 1140px;
+                height: 100px;
+                margin: 0 auto;
+            }
+            .topic1{
+                float: left;
+/*                margin-top:3em;*/
+                 display: inline-block;
+                 margin:25px 0 25px 5px; 
+            }
+           
+            .topic1 a{
+/*                display:block;*/
+                color:#fff;
+                font-size:14px;
+                font-weight:600px;
+                text-decoration:none;
+/*                padding: 0 8px;*/
+            }
+            .topic2{
+                display: inline-block;
+                float: left;
+                margin:25px 200px 25px 400px;
+                
+                
+/*
+                position: absolute;
+                left:37%;
+*/
+            }
+           .topic2 h3 a{
+                
+                color:#fff;
+                font-size: 2.0em;
+                text-decoration: none;
+                font-weight:700;
+                font-family:'Raleway';
+            }
+            .topic3{
+               
+                background-color:rbga(55,55,55,1);
+                float:left;
+                margin:30px 5px 25px 100px;
+            } 
+            .topic h3{
+                color:#fff;
+                
+            }
+            #mainmenu1{
+                width: 1140px;
+                height: 38px;
+                margin: 0 auto;
+                overflow: hidden;
+                cursor:pointer;
+            }
+            #mainmenu1 ul li{
+                background:#fa558f;
+                height:33px;
+                float: left;
+                padding:5px 75px 0;
+              
+            }
+            #mainmenu1 a{
+                color:#fff;
+                font-size:1.2em;
+                 text-align: center;
+            }
+            #mainmenu .selected{
+                background-color:#555;
+            }
+            #mainmenu2{
+                background-color:#fff;
+                width: 1140px;
+                height: 290px;
+                margin: 0 auto;
+                list-style-type: none;
+                display: none;
+                overflow: hidden;
+            }
+            #mainmenu2-1{
+                 overflow: hidden;
+                
+            }
+           
+            #mainmenu2-1 ul li{
+                font-size:0.9em;
+                font-weight:lighter;
+                float: left;
+                font-family:'Raleway';
+                padding:20px 130px 5px 15px;
+                margin:0 20px 0 0;
+                border-bottom-style: solid;
+                border-width:1px;
+                border-color:  #E7E7E7;
+                overflow: hidden;
+                text-align: left;
+                
+            }
+            #mainmenu2-2{
+            
+                float: left;
+/*              height:248px;*/
+            }
+            #mainmenu2-2 li{
+                font-size: 0.9em;
+                color:#999;
+                text-align: left;
+/*                 margin:0 20px 0 0;*/
+                padding:15px 132px 5px 15px;
+              
+            }
+            #container{
+                width: 1903px;
+                height: 210px;
+      
+            }
+/*
+            .container1{
+                background-image: url(Web前端/网上商城/images/bg1.jpg);
+                float: left;
+            }
+            .container2{
+                background-image:url(Web前端/网上商城/images/bg2.jpg);
+                float: left;
+            }
+            .container3{ 
+                 background-image:url(Web前端/网上商城/images/bg3.jpg);
+                float: left;
+            }
+        
+*/
+        </style>
+    </head>
+    <body>
+            <div class="header">
+
+                <div class="topic">
+                    <div class="topic1">
+                    <ul>
+                        <li >
+                             <a href="login.html">登录</a>
+                        </li>
+                    </ul>
+                    </div>
+
+                    <div class="topic2">
+                    <h3>
+                        <a href="index.html">我的小店</a>
+                    </h3>
+                    </div>
+                    <div class="topic3">
+                        <h3>
+                        购物车：￥00.00（0件）
+                        <img src="Web%E5%89%8D%E7%AB%AF/%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/images/cart.png">
+                        </h3>
+                    </div>
+
+                </div>
+                <div id="mainmenu">
+                    <div id="mainmenu1">
+                        <ul>
+                        <li class="selected"><a herf="index.html">首页</a></li>
+                        <li><a herf="meizhuang.html">美妆商城</a></li>
+                        <li><a herf="temai.html">特卖专场</a></li>
+                        <li><a herf="xinpin.html">新品上市</a></li>
+                        <li><a html="chaoren.html">潮人推荐</a></li>
+                        <li><a herf="jinkou.html">进口免税店</a></li>
+                        </ul>
+
+                    </div>
+                    <div id="mainmenu2">
+                        <div id="mainmenu2-1">
+                            <ul>
+                                <li>护肤</li>
+                                <li>彩妆</li>
+                                <li>香水</li>
+                                <li>男士护理</li>
+                                <li>个人护理</li>
+                            </ul>
+
+                       </div>
+                        <div id="mainmenu2-2">
+                            <ul>
+                                <li>洁面</li>
+                                <li>化妆水</li>
+                                <li>乳液</li>
+                                <li>精华</li>
+                                <li>面膜</li>
+                                <li>面霜</li>
+
+                            </ul>
+
+                        </div>
+                        <div id="mainmenu2-2">
+                            <ul>
+                                <li>底妆</li>
+                                <li>眼妆</li>
+                                <li>卸妆</li>
+                                <li>唇妆</li>
+                                <li>美妆工具</li>
+                                <li>套装</li>
+
+                            </ul>
+
+                        </div>
+                         <div id="mainmenu2-2">
+                            <ul>
+                                <li>女士香水</li>
+                                <li>男士香水</li>
+                                <li>中性香水</li>
+                                <li>Q版香水</li>
+                                <li>香水套装</li>
+                                <li>精油</li>
+
+                            </ul>
+
+                        </div>
+                         <div id="mainmenu2-2">
+                            <ul>
+                                <li>面部护理</li>
+                                <li>身体护理</li>
+                                <li>护理套装</li>
+                                <li>洁面</li>
+                                <li>爽肤水</li>
+                                <li>男士洗护</li>
+                            </ul>
+
+                        </div>
+                        <div id="mainmenu2-2">
+                            <ul>
+                                <li>秀发护理</li>
+                                <li>身体护理</li>
+                                <li>纤体</li>
+                                <li>手足护理</li>
+                                <li>卫生巾</li>
+                                <li>口腔护理</li>
+
+
+                            </ul>
+
+                        </div>
+                   </div>
+
+               </div>
+        </div>
+            
+            <script>
+                
+                var oMenu1=document.getElementById('mainmenu1');
+                var oLi=oMenu1.getElementsByTagName('li');
+                var oMenu2=document.getElementById('mainmenu2');
+                for(i=0;i<oLi.length;i++){
+                    oLi[i].index=i;
+                oLi[i].onmouseover=function(){
+                    for(i=0;i<oLi.length;i++){
+                      oLi[i].className='';  
+
+                }
+                    if(this.index==1){
+                            
+                    oMenu2.style.display='block';}
+                    else{
+                        oMenu2.style.display='none';
+                    }
+                       
+                    
+                     oLi[this.index].className='selected';
+                };}
+//                oLi.onmouseout=function(){
+//                  
+//                    if(this.index==1){
+//                            
+//                    oMenu2.style.display='none';}
+//                       
+//                    
+//                   
+//                };
+
+            
+            </script>
+       
+    </body>
+</html>

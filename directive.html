@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <div id="app">
+       <h1 v-weichuang="aa">hhhh</h1>
+   </div>
+    <script src="Vue/vue.js"></script>
+    <script>
+        Vue.directive('weichuang',{
+            bind(el,binding,vnode){
+//            console.log(binding);
+//            console.log(vnode);
+         el.style.backgroundColor=binding.value;},
+            inserted(){
+                console.log('inserted');
+            },
+            update(){
+                
+            },
+            conponentupdated(){},
+            unbind(){
+                
+            },
+            
+        });
+        
+        new Vue({
+            el:'#app',
+            data:{
+                aa:'green',
+            },
+        });
+    </script>
+</body>
+</html>

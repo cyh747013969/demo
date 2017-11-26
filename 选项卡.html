@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <title>选项卡</title>
+        <meta charset="utf-8">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                
+            }
+            ul{
+                list-style: none;
+                
+            }
+            #container{
+                width: 400px;
+                height: 200px;
+/*                background-color: #f00;*/
+                margin:100px auto;
+            }
+            #title{
+                overflow: hidden;
+                border-bottom:1px #000 solid;
+            }
+            #title li{
+                width: 120px;
+                height:30px;
+                display:inline-block;
+                background-color:darkgray;
+                float: left;
+                text-align: center;
+                line-height: 30px;
+                margin-right: 5px;
+            }
+            #contents{
+                background-color:darkgray;
+                width: 400px;
+                height: 170px;
+                
+            }
+            #title .selected{
+                background-color:#000;
+                color:#fff;
+            }
+            #contents .selected{
+                display: block;
+                
+            }
+            #contents div{
+                display: none;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="title">
+                <ul>
+                    <li  class="selected">HTML</li>
+                    <li>CSS</li>
+                    <li>JS</li>
+                </ul>
+            </div>
+            <div id="contents">
+                <div class="selected" >001</div>
+                <div>002</div>
+                <div>003</div>
+            </div>
+        
+        
+        </div>
+        <script>
+        var oTitle=document.getElementById('title');
+        var oContents=document.getElementById('contents')    
+        var aLi=oTitle.getElementsByTagName('li');
+        var aDiv=oContents.getElementsByTagName('div');
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].index=i;
+                aLi[i].onclick=function(){
+                for(var i=0;i<aLi.length;i++){
+                 aLi[i].className='';
+                 aDiv[i].className='';
+                                        }
+                this.className='selected';
+                aDiv[this.index].className='selected';
+            };
+            }
+        
+        
+        </script>>
+    
+    </body>
+
+</html>

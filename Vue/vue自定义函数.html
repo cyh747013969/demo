@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <style>
+       *{
+           margin:0;
+           padding:0;
+           list-style:none;
+           text-decoration:none;
+       }
+       #app{
+           width:400px;
+           height:auto;
+           margin:0 auto;
+           
+       }
+       h1{
+           text-align: center;
+           margin:10px auto;
+           border-bottom:solid 2px #ccc;
+       }
+       li{
+           width:400px;
+           height:50px;
+           background-color: #ccc;
+           margin:10px;
+           border-radius:5px;
+       }
+       .price{
+           float:right;
+           line-height:  50px;
+           margin-right:10px;
+           
+       }
+       .name{
+           line-height:50px;
+           float:left;
+           display:block;
+       }
+       .color{
+           background-color: red;
+       }
+       .icon{
+           width:30px;
+           height:30px;
+           border-radius:50%;
+           overflow: hidden;
+           float: left;
+           margin:10px 10px 10px 10px;
+           cursor:pointer;
+           
+       }
+       .del{
+           width:30px;
+           height:30px;
+/*           display:block;*/
+/*           text-align: left;*/
+       }
+       input[type="checkbox"]{
+           width:20px;
+           height:20px;
+           float:left;
+           margin:15px 10px;
+       }
+       button{
+           width:80px;
+           height:30px;
+       }
+       input[type="text"]{
+           width:150px;
+           margin:10px 0;
+       }
+       .search,.append{
+           float:right;
+       }
+    </style>
+    <div id="app">
+        <h1>todolist</h1>
+<!--        添加功能-->
+        <h3>添加</h3>
+        <input type="text" placeholder="请输入商品名称" v-model="name">
+        <input type="text" v-model="price">
+        <button @click="append()" class="append">添加</button>
+<!--        检索功能-->
+       <h3>检索</h3>
+       <input type="text" placeholder="请输入检索字符" v-model="key">
+       <button class="search" @click="search(key,$event)">检索</button>
+<!--       列表-->
+        <ul>
+            <li v-for="(productlist,index) in product" @click="add(productlist.price,productlist,$event)" :class="{color:productlist.isColor}">
+              <input type="checkbox" :value="index" v-model="checked" @click.stop="">
+               <div class="icon" @click="del(index,$event)"><img class="del" src="del1.png" alt="#"></div>
+                <span class="name">{{productlist.name}}
+                </span>
+                <span class="price">{{productlist.price}}
+                </span>
+            </li>
+        </ul>
+        <span>总价是：{{count}}</span>
+        <br>
+        <br>
+        <button @click="delAll()">删除选中</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+         let vm=new Vue({
+            el:'#app',
+            data:{
+                name:'',
+                price:0,
+                count:0,
+                key:'',
+               product:[
+                {
+                    name:'衣服',
+                    price:'122',
+                    isColor:false,
+                },
+                {
+                    name:'裤子',
+                    price:'245',
+                    isColor:false,
+                },
+                {
+                    name:'鞋子',
+                    price:'220',
+                    isColor:false,
+                },
+                {
+                    name:'T恤',
+                    price:'302',
+                    isColor:false,
+                },
+                {
+                    name:'iphoneX',
+                    price:'8888',
+                    isColor:false,
+                },
+                {
+                    name:'围巾',
+                    price:'122',
+                    isColor:false,
+                },
+                ],
+                checked:[],
+            },
+            methods:{
+                add(price,product,e){
+                product.isColor=!product.isColor;
+                if(product.isColor){
+                 this.count+=parseInt(price);    
+                }else{
+                 this.count-=parseInt(price);
+                }  
+                },
+                del(index,e){
+                   this.product.splice(index,1); 
+                },
+                delAll(){
+//                    console.log(this);
+//                    console.log(this.checked);
+                    let arr=this.product.filter((val,index)=>{
+                        if(!this.checked.includes(index)){
+                            return val;
+                        };
+                    });
+                    this.product=arr;
+                    this.checked=[];
+                },
+                append(){
+                    this.product.push({
+                        name:this.name,
+                        price:parseInt(this.price),
+                        isColor:false,
+                    })
+                },
+                search(key,e){
+                    let arr=this.product.filter((val,index)=>{
+                        if(val.name.includes(this.key)){
+                            return val
+                        };
+                    })
+                    this.product=arr;
+                },
+            }
+
+        });
+    </script>
+</body>
+</html>

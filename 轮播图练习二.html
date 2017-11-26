@@ -1,0 +1,146 @@
+<html>
+    <head>
+        <title>轮播图练习二</title>
+        <meta charset="utf-8">
+        <style>
+            *{
+                margin: 0;
+                padding:0;
+            }
+            img{
+                border:0;
+            }
+            li{
+                list-style: none;
+            }
+            #container{
+                width:520px;
+                height:280px; 
+                margin: 100px auto;
+                position: relative;
+            }
+            #images li{
+                display:none;
+            
+            }
+            #images .selected{
+                display: block;
+            }
+            #arrows li,#button li{
+                width:20px;
+                height: 20px;
+                background-color: #000;
+                color: #fff;
+                text-align: center;
+                line-height: 20px;
+                cursor: pointer;
+            }
+            #arrows{
+                position: absolute;
+                left: 10px;
+                bottom: 10px;
+            }
+            #arrows li{
+                float: left;
+                margin-right: 5px;
+            }
+            #button{
+                position: absolute;
+                right: 10px;
+                bottom: 10px;
+                
+            }
+            #button li{
+                float: left;
+                margin-right: 5px;
+            }
+            #button .selected{
+                background-color:coral;
+            }
+        </style>
+    </head>
+    <body> 
+        <div id="container">
+            <ul id="images">
+                <li class="selected" ><img src="img/1.jpg" alt=""></li>
+                <li ><img src="img/2.jpg" alt=""></li>
+                <li><img src="img/3.jpg" alt=""></li>
+                <li><img src="img/4.jpg" alt=""></li>
+            </ul>
+            <ul id="arrows">
+                <li id="left">&lt;</li>
+                <li id="right">&gt;</li>
+            </ul>
+            <ul id="button">
+                <li class="selected">01</li>
+                <li>02</li>
+                <li>03</li>
+                <li>04</li>
+            </ul>
+        
+        </div>
+    
+    </body>
+    <script>
+        var oMenu=document.getElementById("container");
+        var oIMG=document.getElementById("images");
+        var img=oIMG.getElementsByTagName("li");
+        var oBut=document.getElementById("button");
+        var oLi=oBut.getElementsByTagName("li");
+        var oLeft=document.getElementById("left");
+        var oRight=document.getElementById("right");
+        var nowindex=0;
+        var timer;
+        for(i=0;i<oLi.length;i++){
+            oLi[i].index=i;
+            oLi[i].onmousemove=function(){
+                nowindex=this.index;
+                changeimg();
+            };
+        }
+        oLeft.onclick=oRight.onclick=function(){
+            if(this==oLeft){
+                nowindex--;
+                if(nowindex==-1){
+                    nowindex=img.length-1;
+                }
+                
+            }else{
+                nowindex++;
+                if(nowindex==img.length){
+                    nowindex=0;
+                }
+               
+            }
+            changeimg();
+        }
+        oMenu.mouseout=function(){
+            play();
+        };
+        oMenu.mouseover=function(){
+            clearInterval(timer);    
+        };
+        
+        play();
+        function play(){ 
+        timer=setInterval(function(){oRight.onclick();},1500);
+        }
+        
+        
+        
+        function changeimg(){
+           
+                for(i=0;i<oLi.length;i++){
+                    img[i].className='';
+                    oLi[i].className='';
+                    
+                }
+                img[nowindex].className='selected';
+                oLi[nowindex].className='selected';
+            }; 
+       
+    
+    
+    </script>
+
+</html>

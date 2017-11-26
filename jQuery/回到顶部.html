@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        li{
+            list-style: none;
+        }
+        body{
+            height: 2000px;
+        }
+        div{
+            width:50px;
+            height: 50px;
+            background-color:aquamarine;
+            color:darkcyan;
+            text-align: center;
+            line-height: 50px;
+            position:fixed;
+            bottom:50px;
+            right:100px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="top">top</div>
+    <script src="jQuery/jquery-2.1.1.min.js"></script>
+    <script>
+        
+//        var oTop=document.getElementById("top");
+//        oTop.onclick=function(){
+//            var timer=setInterval(function(){
+//                var iScrollTop=document.body.scrollTop
+//                ||document.documentElement.scrollTop;
+//                if(iScrollTop<=0){
+//                    clearInterval(timer);
+//                }
+//                window.scrollTo(0,iScrollTop-=50);//该函数有两个参数，第一个为水平滚动条的位置，第二个为垂直滚动条的位置，作用是改变滚动条的位置
+//                
+//            },100);
+//        };  原生方法
+        $(function(){
+            var $top=$("#top");
+            $top.on("click",function(){
+            
+            var timer=setInterval(function(){
+             var iScrollTop=$("body").scrollTop();
+                
+                if(iScrollTop<=0){
+                    clearInterval(timer);
+                }
+                $("body").scrollTop(iScrollTop-=100);
+            },100);
+        });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <title>折叠菜单3练习</title>
+        <meta charset="utf-8">
+        <style>
+            *{
+                margin: 0;
+                padding:0;
+            }
+            li{
+                list-style: none;
+            }
+            #container{
+                width: 200px;
+                margin: 0 auto;
+                border: 1px solid #000;
+          
+           
+            }
+            #container h3{
+                background-color:#000;
+                color: #fff;
+                cursor: pointer;
+            }
+            #container .submenu{
+                display: none;
+            }          
+
+            
+            .submenu li:hover{
+                background-color:#ccc;
+                
+            }
+        
+        </style>
+    </head>
+    <body>
+     
+            <ul id="container">
+                <li>
+                    <h3>管理区</h3>
+                    <ul class="submenu">
+                        <li>001</li>
+                        <li>002</li>
+                        <li>003</li>
+                    </ul>
+                
+                </li>
+                <li>
+                     <h3>交流区</h3>
+                    <ul class="submenu">
+                        <li>001</li>
+                        <li>002</li>
+                        <li>003</li>
+                    </ul>
+                </li>
+            </ul>
+        <script>
+            var oMenu=document.getElementById('container');
+            var oH3=oMenu.getElementsByTagName('h3');
+            var oUl=oMenu.getElementsByTagName('ul');
+            var oSubMenu=[];
+            for(i=0;i<oUl.length;i++){
+                if(oUl[i].className=='submenu'){
+                    oSubMenu.push(oUl[i]);
+                }
+            }
+            
+            for(i=0;i<oH3.length;i++){
+                oUl[i].index=i;
+                oUl[i].bShow=false;
+                
+                oH3[i].onclick=function(){
+                    var aSubMenu=oSubMenu[this.index];
+                    if(this.bShow){
+                        aSubMenu.style.display='none';
+                    }else{
+                        aSubMenu.style.display='block';
+                    }
+                    this.bShow=!this.bShow;
+                };
+            }
+            
+        
+        </script>>
+    </body>
+</html>

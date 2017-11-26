@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        img{
+            border:0;
+        }
+        h3{
+            color:#fff;
+        }
+        h3{
+            width:960px;
+            height:100px;
+            background-color:#ccc;
+            margin:30px auto;
+            border-radius: 5px;
+            text-align:center;
+            line-height:100px;
+            cursor:pointer;
+        }
+        #images{
+            width:960px;
+            margin:30px auto;
+        }
+        #images img{
+            width:960px;
+            cursor:pointer;
+        }
+        #article{
+            width:960px;
+            margin:0 auto;
+            cursor:pointer;
+        }
+        #article1{
+            background-color:dimgrey;
+            float:left;
+            width:540px;
+            height:410px;
+            border-radius:5px;
+        }
+
+        #article2{
+            background-color:darkslategrey;
+            float:right;
+            width:390px;
+            height:410px;
+            border-radius:5px;
+        }
+        #article1,#article2{
+            display:table;
+        }
+        #article1 span,#article2 span{
+            display:table-cell;
+            vertical-align: middle;
+            color:aliceblue;
+        }
+        .clearfix::after{
+            content:"";
+            display:block;
+            clear:both;
+        }
+        @media (max-width:959px){
+            #article,h3,#images{
+                width:100%;
+            }
+            #article1{
+                width:67%;
+                margin-right:3%;
+            }
+            #article2{
+                width:30%;
+            }
+            #images img{
+                width:100%;
+            }
+            @media(max-width:759px){
+                #article1,#article2{
+                    width:100%;
+                }
+                #article1{
+                    margin-bottom:3%;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header"><h3>页眉</h3></div>
+    <div id="nav"><h3>导肮</h3></div>
+    <div id="images"><img src="1200px.jpg" alt=""></div>
+    <div id="article" class="clearfix">    
+        <div id="article1" ><span>Oracle 数据库 10g 是第一个专门设计用于网格计算的数据库，在管理企业信息方面最灵活和最经济高效。它削减了管理成本，同时提供最高的服务质量。 除极大地提高质量和性能以外，Oracle 数据库 10g 还通过简化的安装、大幅减少的配置和管理需求以及自动性能诊断和 SQL 调整，显著地降低了管理 IT 环境的成本。 这些及其他自动管理功能提高了 DBA 和开发人员的生产效率。</span></div>
+        <div id="article2"><span>1.对新的架构支持 
+    对 Intel 64 位平台的支持。支持 infiniband 。极大地改进了多层开发架构下的性能和可扩展能力。新的版本也借用了 Windows 操作系统对 Fiber 支持的优势。 
+    2.高速数据处理能力 
+    在这个版本中，一个类型的表对象被引入。该表结构对大量插入和解析数据很有益处。require可以解决传统javascript代码开发中的两个问题：
+      ● 避免同时加载多个文件，可以按需、异步加载，加快页面的响应速度。
+      ● 由传统的文件加载式依赖转变成模块化的依赖管理，这种方式更加便于文件的编码管理。
+    所谓“文件加载式依赖”指的是在传统JavaScript代码开发中，必须保证文件的加载顺序，将依赖性最多的文件放到最后加载。
+    </span></div>
+    </div>
+    <div id="footer"><h3>页脚</h3></div>
+</body>
+</html>

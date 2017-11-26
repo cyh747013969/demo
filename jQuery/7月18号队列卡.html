@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div.centent {
+            float: left;
+            text-align: center;
+            margin: 10px;
+        }
+
+        span {
+            display: block;
+            margin: 2px 2px;
+            padding: 4px 10px;
+            background: #898989;
+            cursor: pointer;
+            font-size: 12px;
+            color: white;
+        }
+        #selected1,#selected2{
+            width:100px;
+            height:160px;
+        }
+    </style>
+</head>
+<body>
+   <div class="centent">
+    <select multiple="multiple" id="selected1">
+        <option value="1">选项1</option>
+        <option value="2">选项2</option>
+        <option value="3">选项3</option>
+        <option value="4">选项4</option>
+        <option value="5">选项5</option>
+        <option value="6">选项6</option>
+        <option value="7">选项7</option>
+    </select>
+    <div>
+        <span id="add">选中删除到右边</span>
+        <span id="add-all">全部删除到右边</span>
+    </div>
+    </div>
+    <div class="centent">
+    <select multiple="multiple" id="selected2">
+        <option value="8">选项8</option>
+    </select>
+    <div>
+        <span id="remove">选中添加到左边</span>
+        <span id="remove-all">全部添加到左边</span>
+    </div>
+    </div>
+    
+    <script src="jQuery/jquery-2.1.1.min.js"></script>
+    <script>
+        var $selected1=$("#selected1 option:selected");
+        var $selected2=$("#selected2 option:selected");    
+     $("#add").on("click",function(){
+         $selected1.appendTo($("#selected2"));
+     });
+     $("#add-all").on("click",function(){
+         $("#selected1 option").appendTo("#selected2")
+     });
+     $("#remove").on("click",function(){
+         $selected2.appeddTo($("#selected1"));
+     });
+     $("#remove-all").on("click",function(){
+         $("#selected2 option").appendTo("#selected1")
+     });
+    </script>
+</body>
+</html

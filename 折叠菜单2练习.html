@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>折叠菜单2练习</title>
+        <meta charset="utf-8">
+        <style>
+            *{
+                margin: 0;
+                padding:0;
+            }
+            li{
+                list-style: none;
+            }
+            #container{
+                width: 200px;
+                margin: 0 auto;
+                border: 1px solid #000;
+          
+           
+            }
+            #container h3{
+                background-color:#000;
+                color: #fff;
+                cursor: pointer;
+            }
+            .submenu{
+/*                display: none;*/
+            }          
+
+            
+            .submenu li:hover{
+                background-color:#ccc;
+                
+            }
+        
+        </style>
+    </head>
+    <body>
+     
+            <ul id="container">
+                <li>
+                    <h3>管理区</h3>
+                    <ul class="submenu">
+                        <li>001</li>
+                        <li>002</li>
+                        <li>003</li>
+                    </ul>
+                
+                </li>
+                <li>
+                     <h3>交流区</h3>
+                    <ul class="submenu">
+                        <li>001</li>
+                        <li>002</li>
+                        <li>003</li>
+                    </ul>
+                </li>
+            </ul>
+        <script>
+            var oMenu=document.getElementById('container');
+            var oH3=oMenu.getElementsByTagName('h3');
+            var oSubMenu=oMenu.getElementsByClassName('submenu');
+            for(i=0;i<oH3.length;i++){
+                oH3[i].index=i;
+                oH3[i].onclick=function(){
+                    if(oSubMenu[this.index].style.display=='none'){
+                        oSubMenu[this.index].style.display='block';
+                    }else{
+                        oSubMenu[this.index].style.display='none';
+                    }
+                };
+            }
+        
+        </script>>
+        
+    </body>
+</html>

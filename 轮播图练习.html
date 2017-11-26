@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <title>Title</title>
+    
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            li{
+                list-style: none;
+            }
+   img{
+            border: 0;
+        }
+        #container{
+            position: relative;
+            width: 520px;
+            height: 280px;
+            margin: 100px auto;
+        }
+        #imgs img{
+            display: none;
+        }
+        #imgs .selected{
+            display: block;
+        }
+        #nav{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        #nav li, #arrows div{
+            width: 20px;
+            height: 20px;
+            background: #000000;
+            color: #fff;
+            text-align: center;
+            line-height: 20px;
+            float: left;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        #nav .selected{
+            background: orange;
+        }
+        #arrows{
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+        </style>
+        <script>
+         
+//        window.onload = function(){
+//            var oNav = document.getElementById("nav");
+//            
+////            这里的nav并不是作为一个数组，而是一个单独的个体元素
+////            var oPic = document.getElementById("imgs");
+////            console.log(oPic.offsetWidth);
+//        };
+
+   
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="imgs">
+            <img src="img/1.jpg" alt=""  class="selected" >
+            <img src="img/2.jpg" alt="" >
+            <img src="img/3.jpg" alt="">
+            <img src="img/4.jpg" alt="">
+            </div>
+            <ul id="nav">
+                <li class="selected">1</li>
+                <li >2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+            <div id="arrows">
+                <div id="left">&lt;</div>
+                <div id="right">&gt;</div>
+            </div>
+        </div>
+        <script>
+            var oMenu=document.getElementById("container");
+            var oImgs=oMenu.getElementsByTagName("img");
+            var oLi=oMenu.getElementsByTagName("li");
+            var oAr=document.getElementById("arrows");
+            var oLeft=document.getElementById("left");
+            var oRight=document.getElementById("right");
+            var nowindex=0;
+            var timer;
+            for(i=0;i<oLi.length;i++){
+                oLi[i].index=i;
+               oLi[i].onmouseover=function(){
+                    nowindex=this.index;
+                  changeImg();  
+                }; 
+            
+            
+            }
+            oLeft.onclick=oRight.onclick=function(){
+              
+                if(this==oLeft){
+                    nowindex--;
+                    if(nowindex== -1){
+                        nowindex=oLi.length-1;//越界处理措施
+                        
+                    }
+                   
+                   }else{ 
+                       nowindex++
+                         if(nowindex==oLi.length){
+                             nowindex=0;
+                         }//越界处理措施
+                   
+                   }
+                 changeImg();  
+            
+            
+               
+            };
+           
+            oMenu.onmouseout=function(){
+                play();
+            };    
+            oMenu.onmouseover=function(){
+                clearInterval(timer);
+            };
+              play();
+             function play(){
+            timer=setInterval(function(){oRight.onclick();},1000);
+            }
+            //定时器的设置格式务必牢记，以后肯定用得着
+            
+            
+            
+            function changeImg(){
+               for(i=0;i<oLi.length;i++){
+                        oLi[i].className='';
+                        oImgs[i].className='';
+                    }
+                        oLi[nowindex].className='selected';
+                        oImgs[nowindex].className='selected';  
+             
+                
+            }
+            
+             
+        
+        </script>
+    
+    </body>
+
+
+
+
+
+    </html>
