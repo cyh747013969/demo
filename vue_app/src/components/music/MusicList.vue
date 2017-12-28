@@ -16,7 +16,6 @@ export default {
             musiclist:[]
         }
     },
-    
     mounted(){
         Axios.get("/static/data/musiclist.json").then(res=>{
             console.log(res);
