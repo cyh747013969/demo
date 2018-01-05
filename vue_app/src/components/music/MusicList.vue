@@ -15,7 +15,7 @@ export default {
             //必须事先做好声明一个数组，将请求的结果返回到数组里面
             musiclist:[]
         }
-    },
+    }, 
     mounted(){
         Axios.get("/static/data/musiclist.json").then(res=>{
             console.log(res);

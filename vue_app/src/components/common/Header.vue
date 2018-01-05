@@ -1,6 +1,6 @@
 <template>
     <div class="head" :style="{'background-color':bg}">
-        <button class="button" :style="{'background-color':bg}">首页</button>
+        <router-link to="/movie/movielist"><button class="button" :style="{'background-color':bg}">首页</button></router-link>
         <h3 class="home"><slot name="title">默认值</slot></h3>
     </div>
 </template>
@@ -15,7 +15,8 @@ export default {
         width:100%;
         background-color: #40C381;
         position: fixed;
-        top:0;   
+        top:0;
+        overflow:hidden;   
     }
     .button{
         border:none;

@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul>
-            <li v-for="movie in movielist" :key="movie.id">
+            <li @click="goDetail(movie.id)" v-for="movie in movielist" :key="movie.id">
                 <div class="left">
                     <img :src="movie.img" alt="">
                 </div>
@@ -30,7 +30,8 @@ export default {
         };
     },
     mounted(){
-        let url1=API_PROXY+"http://m.maoyan.com/movie/list.json?type=hot&limit=10&offset="+this.movielist.length;
+        // 使用axios向端口发送请求
+        let url1=API_PROXY+"http://m.maoyan.com/movie/list.json?type=hot&limit=20&offset="+this.movielist.length;
         let url2='/static/data/MovieList.json';
         Axios.get(url1).then((res)=>{
         console.log(res);
@@ -39,7 +40,8 @@ export default {
         }).catch(()=>{
             console.log('数据获取失败')
         }) 
-        }
+        },
+        
     // methods:{
     //      loadData() {
     //   // url1表示猫眼电影的远程服务接口
@@ -67,6 +69,18 @@ export default {
     //     });
     //     }
     // },
+
+    methods:{
+        goDetail(movieId){
+            // console.log(movieId); 
+            //  let url1=API_PROXY+"http://m.maoyan.com/movie/"+movieId+".json";
+            //  Axios.get(url1).then((res1)=>{
+            //      console.log(res1);
+            //      }
+            //  ).catch();
+             this.$router.push('/movie/movieDetail/'+ movieId);      
+            }
+    }
 }
 </script>
 <style scoped>

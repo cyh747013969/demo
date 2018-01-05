@@ -3,8 +3,8 @@
         <ul class="foot" :style="{'background-color':bg}">
             <li><router-link to="/movie/movielist">电影</router-link></li>
             <li><router-link to="/music/musiclist">音乐</router-link></li>
-            <li><router-link to="book">书籍</router-link></li>
-            <li><router-link to="photo">图片</router-link></li>
+            <li><router-link to="/book/booklist">书籍</router-link></li>
+            <li><router-link to="/photo/photolist">图片</router-link></li>
         </ul>
     </div>
 </template>

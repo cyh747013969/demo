@@ -7,8 +7,14 @@ import MovieDetail from '../components/movie/MovieDetail'
 import Music from '../components/music/Music'
 import MusicList from '../components/music/MusicList'
 import MusicAlbums from '../components/music/MusicAlbums'
+import Book from '@/components/book/Book'
+import BookList from '@/components/book/BookList'
+import Photo from '@/components/photo/Photo'
+import PhotoList from '@/components/photo/PhotoList'
+import PhotoDetail from '@/components/photo/PhotoDetail'
 Vue.use(Router)
 
+// 配置路径
 export default new Router({
   routes: [
     {
@@ -25,7 +31,7 @@ export default new Router({
           component:MovieList
         },
         {
-          path:'moviedetail',
+          path:'moviedetail/:movieId',
           component:MovieDetail
         }
       ]
@@ -43,6 +49,29 @@ export default new Router({
           component:MusicAlbums
         }
       ]
+    },{
+      path:'/book',
+      name:'book',
+      component:Book,
+      children:[{
+        path:'booklist',
+        name:'booklist',
+        component:BookList
+      }]
+    },{
+      path:'/photo',
+      name:'photo',
+      component:Photo,
+      children:[{
+        path:'photolist',
+        name:'photolist',
+        component:PhotoList
+      }, {
+        path:'photodetail/:index',
+        name:'photodetail',
+        component:PhotoDetail
+      }]
     }
+
   ]
 })

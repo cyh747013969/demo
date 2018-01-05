@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue轮播图</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            text-decoration:none;
+            list-style: none;
+        }
+        #app{
+            display: table;
+        }
+        .left,ul,.right{
+            display:table-cell;
+        }
+        .left,.right{
+            cursor:pointer;
+        }
+        img.left,img.right{
+            width:30px;
+            height:auto;
+            padding:125px 0;
+        }
+        #app{
+            margin:50px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+       <div class="left" @click="nchange"><img src="img/left.png" alt="#" class="left"></div>
+        <ul>
+            <li v-for="(imgList,index) in imgs" :key="index" v-show="imgList.isShow" @mouseenter="stop()" @mouseleave="go()">
+                <img :src="imgList.imgSrc" alt="imgList.imgAlt">
+            </li>
+        </ul>
+        <div class="right" @click="change()"><img src="img/right.png" alt="#" class="right"></div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{  
+                idx:0,
+                imgs:[{
+                    imgSrc:"img/pic1.jpg",
+                    imgAlt:"图片一",
+                    isShow:true
+                },{
+                    imgSrc:"img/pic2.jpg",
+                    imgAlt:"图片二",
+                    isShow:false
+                },{
+                    imgSrc:"img/pic3.jpg",
+                    imgAlt:"图片三",
+                    isShow:false
+                  },{
+                    imgSrc:"img/pic4.jpg",
+                    imgAlt:"图片四",
+                    isShow:false
+                  }],
+                timer: ''
+                },
+            methods:{
+                change(){
+                    this.idx=this.idx+1;
+                    for(let i=0;i<this.imgs.length;i++){
+                            this.imgs[i].isShow=false;
+                        }
+                    if(this.idx>this.imgs.length-1){
+                        this.idx=0;
+                    }
+                    this.imgs[this.idx].isShow=true;   
+                },
+                nchange(){
+                   this.idx=this.idx-1;
+                    for(let i=0;i<this.imgs.length;i++){
+                            this.imgs[i].isShow=false;
+                        }
+                    if(this.idx<0){
+                        this.idx=this.imgs.length-1;
+                    }
+                    this.imgs[this.idx].isShow=true;   
+                }, 
+                stop(){
+                    clearInterval(this.timer);
+                    this.timer=null;
+                },
+                go(){
+                    this.timer = setInterval(() => {
+                        this.change()
+                    }, 1000)
+                }
+                
+            },
+            created() {
+            this.$nextTick(() => {
+                this.timer = setInterval(() => {
+                    this.change()
+                }, 1500)
+            })
+            }
+        });
+    </script>    
+</body>
+</html>
